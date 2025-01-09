@@ -1,1 +1,1 @@
-This is just a collection of various projects and small tasks that have needed to complete as a part of uni courses on python.
+This is just a collection of various projects and small tasks that I have needed to complete as a part of my university courses on python.
