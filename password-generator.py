@@ -1,38 +1,28 @@
 
-import os
 import time
 import re
 import string
 import secrets
 
 def menu():
-    os.system('cls' if os.name == 'nt' else 'clear')
     print("----------------------------------------------------------")
-    print(f"Welcome to Password Generator.")
-    time.sleep(0.5)  ### this delays when the next command (below) is executed (in seconds) ###
+    print("Welcome to Password Generator.")
     valid = False
     while valid == False:
-        print("Would you like to create your own password, generate one, or end the program?") ### option to create or generate a password ###
+        print("Would you like to create your own password, generate one, or end the program?") # option to create or generate a password
         time.sleep(1)  
         print("     - Generate")
-        time.sleep(0.5)  
         print("     - Create")
-        time.sleep(0.5)
         print("     - Terminate")
         user_choice = input("").lower()
-        os.system('cls' if os.name == 'nt' else 'clear')
         print("----------------------------------------------------------")
         time.sleep(1) 
         if user_choice == "create":
-            os.system('cls' if os.name == 'nt' else 'clear')
-            print("----------------------------------------------------------")
             valid = True
             user_password = create_password()
             retype_pswd(user_password)
             menu()
         elif user_choice == "generate":
-            os.system('cls' if os.name == 'nt' else 'clear')
-            print("----------------------------------------------------------")
             valid = True
             pswd_generator()
             menu()
@@ -43,16 +33,12 @@ def menu():
             print("Please pick again.")
             input("")
 
-
 def create_password():
-    print("\nYour password must fulfill these conditions:")     ### the lines below set the conditions for creating a password ###
-    time.sleep(0.5)                                 
+    print("\nYour password must fulfill these conditions:")     # the lines below set the conditions for creating a password
+    time.sleep(1)                                 
     print("\n    1. Include a lowercase and UPPERCASE letter")
-    time.sleep(0.5)
     print("    2. Include a number")
-    time.sleep(0.5)
     print("    3. Include a special character")
-    time.sleep(0.5)
     print("    4. Length between 8 and 20 characters long")
     time.sleep(1)
     new = False
@@ -71,11 +57,9 @@ def create_password():
     time.sleep(1)
     return user_password
 
-
 def pswd_generator():
     var = False
     while var == False:
-        os.system('cls' if os.name == 'nt' else 'clear')
         print("----------------------------------------------------------")
         try:
             char_length = int(input("\nHow many characters long do you wish your password to be? (8-20) "))
@@ -93,11 +77,9 @@ def pswd_generator():
             print("Error please try again.")
             time.sleep(1)
 
-
 def retype_pswd(pswd):
     var = False
     input("\nPress enter to retype password.")
-    os.system('cls' if os.name == 'nt' else 'clear')
     print("----------------------------------------------------------")
     retyped_password = str(input("\nRetype password: "))       ### prompt to retype password ###
     while var == False:          ### loop for retyping password ###
@@ -107,14 +89,9 @@ def retype_pswd(pswd):
             time.sleep(1)
             print("Press Enter to restart")
             input("")
-            os.system('cls' if os.name == 'nt' else 'clear')
             print("----------------------------------------------------------")
             print("You will be sent back to the main menu in: 3s")
-            time.sleep(1)
-            print("2s")
-            time.sleep(1)
-            print("1s")
-            time.sleep(1)
+            time.sleep(3)
         else:
             print("Sorry this does not match the original, try again. ")
             time.sleep(0.5)
@@ -124,13 +101,11 @@ def retype_pswd(pswd):
             else:
                 var = False
 
-
 def password_generator(width):
     lowercase = string.ascii_lowercase          ### variable for the set of lowercase letters ###
     uppercase = string.ascii_uppercase          ### variable for the set of uppercase letters ###
     digits = string.digits                      ### variable for the set of digits ###
-    special_characters = string.punctuation + "£"    ### variable for the set of punctuation and special characters ###
-
+    special_characters = string.punctuation + "£"    ### variable for the set of punctuation and special characters ##
     length = width                 ### sets the length of password that the generator will create ###
     characters = lowercase + uppercase + digits + special_characters    ### the characters the generator will pick from, to scramble ###
     user_password = "".join(secrets.choice(characters) for i in range(length))  ### generates the password ###
